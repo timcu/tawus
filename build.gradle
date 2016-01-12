@@ -1,9 +1,9 @@
 apply plugin: "idea"
 
-tapestryVersion = "5.3.8"
-testngVersion = "5.14.9"
-nexusUsername = "tawus"
-nexusPassword = "liridwm"
+ext.tapestryVersion = "5.3.8"
+ext.testngVersion = "5.14.9"
+ext.nexusUsername = "tawus"
+ext.nexusPassword = "liridwm"
 
 subprojects {
     apply plugin: "java"
@@ -11,9 +11,9 @@ subprojects {
     apply plugin: "idea"
 
     group = "com.googlecode.tawus"
-    //version 0.2.3-SNAPSHOT for tapestry 5.3.x
-    //version 0.2.4-SNAPSHOT for tapestry 5.4.x
-    version = "0.2.3-SNAPSHOT"
+    //version 0.3 for tapestry 5.3.x
+    //version 0.4 for tapestry 5.4.x
+    version = "0.3"
     sourceCompatibility = '1.5'
 
     targetCompatibility = '1.5'
@@ -31,8 +31,12 @@ subprojects {
     repositories {
         mavenLocal()
         mavenCentral()
-        mavenRepo urls: "https://repository.apache.org/content/repositories/staging/"
-        mavenRepo urls: "http://repository.jboss.org/nexus/content/groups/public-jboss/"
+        maven {
+        	url "https://repository.apache.org/content/repositories/staging/"
+        }
+        maven {
+        	url "http://repository.jboss.org/nexus/content/groups/public-jboss/"
+    	}
     }
 
     dependencies {
