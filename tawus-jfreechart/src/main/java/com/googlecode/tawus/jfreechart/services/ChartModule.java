@@ -18,11 +18,14 @@ package com.googlecode.tawus.jfreechart.services;
 
 import java.util.Map;
 
+import org.apache.tapestry5.ioc.Configuration;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
 import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.services.StrategyBuilder;
 import org.apache.tapestry5.services.ComponentEventResultProcessor;
+import org.apache.tapestry5.services.ComponentClassResolver;
+import org.apache.tapestry5.services.LibraryMapping;
 
 import com.googlecode.tawus.jfreechart.ChartModel;
 import com.googlecode.tawus.jfreechart.JPEGChartModel;
@@ -59,4 +62,17 @@ public class ChartModule
       configuration.addInstance(JPEGChartModel.class, JPEGChartRenderer.class);
       configuration.addInstance(PNGChartModel.class, PNGChartRenderer.class);
    }
+   
+      /**
+    * Contribute the library which will have 'jfreechart' as prefix
+    * 
+    * @param configuration
+    */
+   @Contribute(ComponentClassResolver.class)
+   public void provideComponentClassResolver(Configuration<LibraryMapping> configuration)
+   {
+      configuration.add(new LibraryMapping("jfreechart", "com.googlecode.tawus.jfreechart"));
+   }
+
+   
 }

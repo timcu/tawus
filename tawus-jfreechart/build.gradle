@@ -1,5 +1,5 @@
 dependencies {
-  compile "jfree:jfreechart:1.0.12"
+  compile "jfree:jfreechart:1.0.13"
 }
 
 jar {
